@@ -41,7 +41,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
 
 
     // CONSULTA SQL PARA VERIFICAR SI EL USUARIO YA EXISTE EN LA BASE DE DATOS
-    $db_validation = $connection->prepare("SELECT * FROM detalle_vacuna WHERE documento = '$document_enfermero' AND documento_user ='$document_enfermero' AND state = 1");
+    $db_validation = $connection->prepare("SELECT * FROM detalle_vacuna WHERE documento = '$document_enfermero' AND documento_user ='$document_enfermero' AND estado = 1");
     $db_validation->execute();
     $register_validation = $db_validation->fetchAll();
 
@@ -55,7 +55,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
         echo '<script> alert ("Estimado Usuario, Existen Datos Vacios En El Formulario");</script>';
         echo '<script> window.location= "usuario.php"</script>';
     } else {
-        $register_user = $connection->prepare("INSERT INTO detalle_vacuna(document,documento_user,vacuna,fecha_vacuna,fecha_fin,estado) VALUES('$document_enfermero','$documento_user','$vacuna','$fecha','$fechaFin'");
+        $register_user = $connection->prepare("INSERT INTO detalle_vacuna(documento,documento_user,vacuna,fecha_vacuna,fecha_fin,estado) VALUES('$document_enfermero','$document_user','$vacuna','$fecha','$fechaFin',1)");
         if ($register_user->execute()) {
             echo '<script>alert ("Registro Exitoso de Vacuna.");</script>';
             echo '<script>window.location="lista_vacunas.php"</script>';
@@ -86,7 +86,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>REGISTRAR VACUNA || SIFER-APP</title>
+    <title>REGISTRAR VACUNA || CONTROL DE VACUNAS</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="public/CSS/bootstrap.min.css">
     <!----css3---->

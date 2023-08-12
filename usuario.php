@@ -71,7 +71,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>CREAR USUARIO || SIFER-APP</title>
+    <title>CREAR USUARIO </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="public/CSS/bootstrap.min.css">
     <!----css3---->

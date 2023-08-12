@@ -30,7 +30,7 @@ $vacunas = $vacunasRegistradas->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>ACTUALIZACION SOAT || SIFER-APP</title>
+    <title>LISTA VACUNAS</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="public/CSS/bootstrap.min.css">
     <!----css3---->
@@ -82,27 +82,28 @@ $vacunas = $vacunasRegistradas->fetchAll(PDO::FETCH_ASSOC);
                     try {
                         $fecha_actual = new DateTime();
 
+                        echo '<thead>
+                        <tr>
+                            
+                            <th>Vacuna</th>
+                            <th>Enfermero</th>
+                            <th>Usuario</th>
+                            <th>Fecha Vacunacion</th>
+                            <th>Fecha Final</th>
+                            <th>Dias Restantes</th>
+                            <th>Estado</th>
+                            
+                        </tr>
+                    </thead>';
+
+                        echo '<tbody>';
+
                         if (!empty($vacunas)) {
                             foreach ($vacunas as $vacuna) {
                                 $fechaVenta = new DateTime($vacuna['fecha_vacuna']);
                                 $fechaVencimiento = new DateTime($vacuna['fecha_fin']);
                                 $diasRestantes = $fecha_actual->diff($fechaVencimiento)->days;
 
-                                echo '<thead>
-                                <tr>
-                                    
-                                    <th>Vacuna</th>
-                                    <th>Enfermero</th>
-                                    <th>Usuario</th>
-                                    <th>Fecha Vacunacion</th>
-                                    <th>Fecha Final</th>
-                                    <th>Dias Restantes</th>
-                                    <th>Estado</th>
-                                    
-                                </tr>
-                            </thead>';
-
-                                echo '<tbody>';
 
                                 // Agregar clase CSS si el registro está vencido
                                 $class = ($fecha_actual > $fechaVencimiento) ? 'vencido' : '';
@@ -151,7 +152,7 @@ $vacunas = $vacunasRegistradas->fetchAll(PDO::FETCH_ASSOC);
 
                         // Encriptacion del numero de documento 
 
-                        $correo_electronico= $vacuna['correo'];
+                        $correo_electronico = $vacuna['correo'];
 
                         $asunto = "Actualizacion de Vacuna";
                         $message = "Estimado Usuario Debe acercarse nuevamente realizar su vacuna";
@@ -165,7 +166,7 @@ $vacunas = $vacunasRegistradas->fetchAll(PDO::FETCH_ASSOC);
                             echo '<script>alert("Error, no se pudo habilitar el cambio de contraseña");</script>';
                             echo '<script>window.location="index.php"</script>';
                         }
-                    } 
+                    }
 
                     ?>
                 </div>
