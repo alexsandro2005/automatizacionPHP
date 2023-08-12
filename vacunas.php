@@ -18,10 +18,14 @@ $clientes_report->execute();
 $clientes = $clientes_report->fetch(PDO::FETCH_ASSOC);
 
 
+
 ?>
 <?php
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formreg")) {
 
+
+    
+    date_default_timezone_set('America/Bogota');
 
     // DECLARACION DE LOS VALORES DE LAS VARIABLES DEPENDIENDO DEL TIPO DE CAMPO QUE TENGA EN EL FORMULARIO
     $document_user = $_POST['usuario'];
